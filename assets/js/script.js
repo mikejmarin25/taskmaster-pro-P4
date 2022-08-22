@@ -42,7 +42,7 @@ var loadTasks = function() {
 };
 
 var saveTasks = function() {
-  localStorage.setItem("taks", JSON.stringify(tasks));
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 
@@ -79,7 +79,7 @@ $("#task-form-modal .btn-primary").click(function() {
     });
 
     saveTasks();
-  };
+  }
 });
 
 // remove all tasks
@@ -94,6 +94,22 @@ $("#remove-tasks").on("click", function() {
 // load tasks for the first time
 loadTasks();
 
-$(".card .list-group").sortable({
-  connectWith: $(".card .list-group")
+// due date was clicked
+$(".list-group").on("click", "span", function() {
+  // get current text
+  var date = $(this)
+    .text()
+    .trim();
+
+  // create new input element
+  var dateInput = $("<input>")
+    .attr("type", "text")
+    .addClass("form-control")
+    .val(date);
+
+  // swap out elements
+  $(this).replaceWith(dateInput);
+
+  // automatically focus on new element
+  dateInput.trigger("focus");
 });
