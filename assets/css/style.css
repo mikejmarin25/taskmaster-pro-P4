@@ -1,3 +1,11 @@
 ul.list-group {
   min-height: 130px;
 }
+
+.class:dropover {
+background-color: rgba(0,0,0,0,3);
+}
+
+.class:dropover-active {
+  background-color: rgba(0,0,0,0,9);
+}
